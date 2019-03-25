@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class='head '>
+    <div id='head'>
+        <div class='head-1 '>
+            <!--<h1>HeLLo</h1>-->
+            <h1></h1>
+        </div>
+        <div class='head-2 '>
+            <a href="/nimda/"><h1>Login</h1></a>
+        </div>
+        <span class = 'login-opacit'></span>
+
+    </div>
+</div>
+{% if question_list %}
+<div class='main '>
+    <div class='main-1 '>
+        <!--<h1>Wow 1</h1>-->
+        <div id='main-1'>
+            <div class='nav '>
+                <div class='nav-1 '>
+                    <h2></h2>
+                    <a href="#"><h2>Home</h2></a>
+                    <a href="#"><h2>About</h2></a>
+                    <a href="#"><h2>Contact</h2></a>
+                    <a href="#"><h2>More +</h2></a>
+                </div>
+            </div>
+
+            <div class='social '>
+               <div class="social-1">
+                <a href="https://www.facebook.com/ramakimunir" target="_blank"><i class="fa fa-facebook-square" style="font-size: 38px"></i></a>
+                <a href="https://www.instagram.com/ramakii" target="_blank"><i class="fa fa-instagram" style="font-size: 38px"></i></a>
+                <a href="https://www.youtube.com/c/MuRamaki" target="_blank"><i class="fa fa-youtube-play" style="font-size: 35px"></i></a>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='main-2 '>
+        <!--<h1>Wow 2</h1>-->
+        {% for q in question_list %}
+        <div class='post '>
+            <div class='post-1 '>
+                <a href="{% url 'polls:detail' q.id %}"><img src="media/{{ q.image }}" width='100%' style="border-radius: 15px;";
+></a>
+
+            </div>
+            <div class='post-2 '>
+                <h4><a href="{% url 'polls:detail' q.id %}">{{ q.question_text }}</a></h4><br>
+
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+<footer class = 'foot '><h4 class="cprth"><i class="fa fa-copyright" style="font-size: 20px; vertical-align: bottom"></i>  Ramaki</h4>
+</footer>
+
+
+</div>
+{% else %}
+<h2>No Polls are available.</h2>
+{% endif %}
+
+
+
+
+<!--{% if question_list %}-->
+<!--<ul>-->
+    <!--{% for q in question_list %}-->
+    <!--<li>-->
+        <!--<a href="{% url 'polls:detail' q.id %}">{{ q.question_text }}<br><img src="media/{{ q.image }}"-->
+                                                                              <!--width='100px'></a>-->
+    <!--</li>-->
+    <!--{% endfor %}-->
+<!--</ul>-->
+
+<!--{% else %}-->
+<!--<h2>No Polls are available.</h2>-->
+<!--{% endif %}-->
+
+</body>
+</html>
